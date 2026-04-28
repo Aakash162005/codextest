@@ -1,0 +1,75 @@
+.hero {
+  height: 92vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* dark overlay */
+.hero-overlay {
+  height: 100%;
+  background: rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+}
+
+.hero-content {
+  text-align: center;
+  max-width: 850px;   /* 👈 THIS IS THE KEY */
+  margin: 0 auto;
+}
+
+/* HEADING */
+.hero h1 {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #ffffff;
+}
+
+/* SUBTEXT */
+.hero p {
+  margin-top: 35px;
+  max-width: 600px;   /* 👈 controls second line width */
+  margin-inline: auto;
+  color: #ffffff;
+  font-size: 20px;
+}
+
+/* TITLE
+.hero h1 {
+  font-size: 54px;
+  font-weight: 700;
+  line-height: 1.2;
+} */
+
+/* SUBTEXT */
+/* .hero p {
+  margin-top: 18px;
+  max-width: 650px;
+  margin-inline: auto;
+  color: #cbd5f5;
+  font-size: 16px;
+} */
+
+/* BUTTONS */
+.hero-buttons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* OUTLINE BUTTON */
+.btn-outline {
+  padding: 10px 24px;
+  border-radius: 25px;
+  border: 1px solid #ff4d6d;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+}
+.btn-outline,
+.btn-primary {
+  text-decoration: none;
+}

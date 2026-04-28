@@ -1,0 +1,73 @@
+.projects {
+  padding: 120px 0;
+  background: linear-gradient(135deg, #1e1b4b 0%, #3b0764 100%);
+}
+
+/* TITLE */
+.section-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 80px;
+  color: #ffffff;
+}
+
+/* ROW */
+.project-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 100px;
+}
+
+.reverse {
+  flex-direction: row-reverse;
+}
+
+/* IMAGE (VERY IMPORTANT) */
+.project-image {
+  flex: 1;
+}
+
+.project-image img {
+  width: 710px;
+  height: 370px;
+  object-fit: cover;
+  border-radius: 22px;
+  display: block;
+}
+.burger-image {
+  margin-left: 100px;
+}
+
+/* TEXT */
+.project-text {
+  width: 480px;
+}
+
+.project-text h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.project-text p {
+  margin-top: 18px;
+  margin-bottom: 28px;
+  line-height: 1.8;
+  font-size: 15px;
+  color: #d1d5db;
+}
+
+/* BUTTON ALIGN */
+.project-text button {
+  margin-top: 10px;
+}
+
+/* REVERSE */
+.reverse {
+  flex-direction: row-reverse;
+}
+.btn-primary{
+  text-decoration: none;
+}

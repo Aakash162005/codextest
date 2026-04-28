@@ -1,0 +1,151 @@
+.footer {
+  padding: 90px 70px 40px;
+  background: #1c1d4b;
+  color: white;
+}
+
+.footer-top {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.footer-logo {
+  width: 110px;
+  margin-bottom: 18px;
+}
+
+.footer-top p {
+  color: rgba(255,255,255,0.72);
+  font-size: 15px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.4fr;
+  gap: 80px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.footer h3 {
+  font-size: 24px;
+  margin-bottom: 26px;
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer ul li {
+  margin-bottom: 18px;
+  color: rgba(255,255,255,0.8);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.footer ul li:hover {
+  color: #ff5a78;
+}
+
+.subscribe-input {
+  display: flex;
+  align-items: center;
+  border: 2px solid rgba(255,255,255,0.7);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 35px;
+}
+
+.subscribe-input input {
+  flex: 1;
+  padding: 16px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  font-size: 15px;
+}
+
+.subscribe-input button {
+  background: linear-gradient(90deg, #ff5b4d, #ff2fb3);
+  border: none;
+  color: white;
+  padding: 14px 30px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.trending-title {
+  margin-top: 10px;
+}
+
+.tech-icons {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.tech-icons span {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.08);
+  font-size: 18px;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 26px;
+  margin-top: 70px;
+}
+
+.socials img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.socials img:hover {
+  transform: translateY(-3px);
+  opacity: 0.8;
+}
+
+.copyright {
+  text-align: center;
+  margin-top: 26px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+}
+.tech-box {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tech-box img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+.footer a {
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer a:hover {
+  color: #ff5a78;
+}
