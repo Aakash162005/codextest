@@ -1,4 +1,4 @@
-import UIUXDesign from '../UIUXDesign/UIUXDesign';
+import UIUXDesign from '../Courses/UIUXDesign/UIUXDesign';
 
 const Services = () => {
   return <UIUXDesign />;
