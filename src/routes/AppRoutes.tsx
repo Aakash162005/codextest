@@ -7,6 +7,8 @@ import Work from "../pages/Work/Work";
 import Contact from "../pages/Contact/Contact";
 import UIUXDesign from "../pages/UI-UX-Design";
 import FullstackDevCourse from "../pages/Courses/FullstackDevCourse";
+import AppDevelopment from "../pages/AppDevelopment";
+import UIUXDesignCourse from "../pages/Courses/UIUXDesignCourse";
 
 const AppRoutes = () => {
   return (
@@ -19,6 +21,8 @@ const AppRoutes = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/ui-ux" element={<UIUXDesign />} />
         <Route path="/full-stack" element={<FullstackDevCourse />} />
+        <Route path="/app-development" element={<AppDevelopment />} />
+        <Route path="/uiux-course" element={<UIUXDesignCourse />} />
       </Routes>
     </BrowserRouter>
   );

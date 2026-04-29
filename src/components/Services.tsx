@@ -1,20 +1,25 @@
 
+import { Link } from 'react-router-dom';
+
 const Services = () => {
   const services = [
     {
       title: 'UI/UX Design',
       desc: 'Creating intuitive and engaging user experiences that delight your customers.',
-      img: 'https://images.unsplash.com/photo-1586717791821-3f44a563de4c?auto=format&fit=crop&w=800&q=80'
+      img: 'https://images.unsplash.com/photo-1586717791821-3f44a563de4c?auto=format&fit=crop&w=800&q=80',
+      link: '/ui-ux'
     },
     {
       title: 'Web Development',
       desc: 'Building robust, scalable, and high-performance web applications.',
-      img: 'https://images.unsplash.com/photo-1547658719-da2b8116c171?auto=format&fit=crop&w=800&q=80'
+      img: 'https://images.unsplash.com/photo-1547658719-da2b8116c171?auto=format&fit=crop&w=800&q=80',
+      link: '#'
     },
     {
       title: 'Mobile Apps',
       desc: 'Developing seamless mobile experiences for iOS and Android platforms.',
-      img: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80'
+      img: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80',
+      link: '/app-development'
     }
   ];
 
@@ -42,7 +47,7 @@ const Services = () => {
               </div>
               <div style={{ padding: '32px' }}>
                 <p style={{ marginBottom: '24px' }}>{service.desc}</p>
-                <a href="#" className="gradient-text" style={{ fontWeight: '600', textDecoration: 'none' }}>Learn More →</a>
+                <Link to={service.link} className="gradient-text" style={{ fontWeight: '600', textDecoration: 'none' }}>Learn More →</Link>
               </div>
             </div>
           ))}
