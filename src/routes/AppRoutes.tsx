@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ScrollToTop from "../components/common/ScrollToTop";
 
 import Landing from "../pages/Landing/Landing";
 import About from "../pages/About/About";
@@ -13,6 +14,7 @@ import UIUXDesignCourse from "../pages/Courses/UIUXDesignCourse";
 const AppRoutes = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/about" element={<About />} />

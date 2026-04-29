@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { 
     Users, 
     Clock, 
@@ -26,6 +26,9 @@ import projectWeb1 from '../../assets/images/project_web_1.png';
 import foodImg from '../../assets/food.png';
 
 export default function Landing() {
+    // Scroll Parallax for Partner Logos
+    const { scrollYProgress } = useScroll();
+    const xLogos = useTransform(scrollYProgress, [0, 0.4], [100, -300]);
     // Services Carousel State
     const [currentService, setCurrentService] = useState(0);
     const services = [
@@ -60,6 +63,13 @@ export default function Landing() {
         setCurrentService((prev) => (prev - 1 + services.length) % services.length);
     };
 
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentService((prev) => (prev + 1) % services.length);
+        }, 5000);
+        return () => clearInterval(interval);
+    }, [services.length]);
+
     // Testimonials State
     const [currentTestimonial, setCurrentTestimonial] = useState(0);
     const testimonials = [
@@ -86,12 +96,49 @@ export default function Landing() {
     };
 
     return (
-        <div className="min-h-screen font-sans text-white selection:bg-pink-500/30 overflow-x-hidden relative" style={{ background: '#060212' }}>
-            {/* ── Global Background Glows ── */}
-            <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-                <div className="absolute top-[-10%] left-[-10%] w-[70%] h-[70%] bg-pink-900/10 blur-[180px] rounded-full animate-pulse" />
-                <div className="absolute top-[20%] right-[-10%] w-[60%] h-[60%] bg-purple-900/20 blur-[180px] rounded-full animate-pulse delay-1000" />
-                <div className="absolute bottom-[-10%] left-[20%] w-[80%] h-[50%] bg-indigo-900/10 blur-[180px] rounded-full" />
+        <div className="min-h-screen font-sans text-white selection:bg-pink-500/30 overflow-x-hidden relative" style={{ background: '#05020d' }}>
+            {/* ── Premium Animated Background ── */}
+            <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#05020d]">
+                {/* Tech Grid Backdrop */}
+                <div 
+                    className="absolute inset-0 opacity-[0.06]" 
+                    style={{
+                        backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px)`,
+                        backgroundSize: '50px 50px'
+                    }}
+                />
+                
+                {/* Moving Glowing Orbs/Mesh blobs */}
+                <motion.div 
+                    animate={{ 
+                        x: [0, 100, -50, 0], 
+                        y: [0, -80, 50, 0],
+                        scale: [1, 1.2, 0.9, 1] 
+                    }}
+                    transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                    className="absolute top-[-20%] left-[-20%] w-[90%] h-[90%] bg-gradient-to-br from-pink-600/20 to-purple-800/10 blur-[150px] rounded-full" 
+                />
+                <motion.div 
+                    animate={{ 
+                        x: [0, -120, 80, 0], 
+                        y: [0, 100, -80, 0],
+                        scale: [1, 0.8, 1.1, 1] 
+                    }}
+                    transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                    className="absolute bottom-[-20%] right-[-10%] w-[80%] h-[80%] bg-gradient-to-tr from-indigo-700/15 to-rose-500/10 blur-[160px] rounded-full" 
+                />
+                <motion.div 
+                    animate={{ 
+                        x: [0, 60, -80, 0], 
+                        y: [0, 80, 100, 0],
+                        scale: [1, 1.15, 0.85, 1] 
+                    }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    className="absolute top-[40%] left-[30%] w-[60%] h-[60%] bg-gradient-to-br from-purple-600/10 to-orange-500/10 blur-[140px] rounded-full" 
+                />
+
+                {/* Ambient Soft Vignette */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,#05020d_90%)]" />
             </div>
 
             <div className="relative z-10">
@@ -138,16 +185,35 @@ export default function Landing() {
                     </div>
                 </section>
 
-                {/* ── Partners Section ── */}
-                <section className="py-12 border-y border-white/10 bg-white/[0.02]">
-                    <div className="max-w-7xl mx-auto px-6">
-                        <div className="flex flex-wrap justify-between items-center gap-8 opacity-60">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Uber_logo_2018.png" alt="Uber" className="h-6 filter invert" />
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Microsoft_logo.svg" alt="Microsoft" className="h-6 filter invert" />
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" className="h-6 filter invert" />
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" className="h-5 filter invert" />
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" alt="Adidas" className="h-8 filter invert" />
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" className="h-5 filter invert" />
+                {/* ── Partners Section (Scroll Parallax Cards) ── */}
+                <section className="py-20 overflow-hidden relative">
+                    <div className="max-w-[100vw] px-6">
+                        <div className="flex justify-center">
+                            <motion.div 
+                                style={{ x: xLogos }} 
+                                className="flex gap-8 items-center"
+                            >
+                                {[
+                                    { name: "Uber", src: "https://upload.wikimedia.org/wikipedia/commons/c/cc/Uber_logo_2018.png" },
+                                    { name: "Microsoft", src: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Microsoft_logo.svg" },
+                                    { name: "Google", src: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" },
+                                    { name: "Amazon", src: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" },
+                                    { name: "Adidas", src: "https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" },
+                                    { name: "Netflix", src: "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" },
+                                ].map((partner, index) => (
+                                    <motion.div 
+                                        key={index}
+                                        whileHover={{ scale: 1.05, borderColor: 'rgba(236, 72, 153, 0.4)', backgroundColor: 'rgba(255, 255, 255, 0.05)' }}
+                                        className="min-w-[180px] md:min-w-[220px] h-[90px] md:h-[110px] bg-white/[0.02] border border-white/5 backdrop-blur-sm rounded-3xl flex items-center justify-center p-6 shadow-xl transition-all duration-300 group cursor-pointer"
+                                    >
+                                        <img 
+                                            src={partner.src} 
+                                            alt={partner.name} 
+                                            className="h-5 md:h-7 object-contain filter invert opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300" 
+                                        />
+                                    </motion.div>
+                                ))}
+                            </motion.div>
                         </div>
                     </div>
                 </section>
