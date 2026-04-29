@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle2, ArrowRight, Eye, Target } from 'lucide-react';
+import { CheckCircle2, ArrowRight, Eye, Target, Award, Users, Smile, Rocket, Sparkles } from 'lucide-react';
+import { FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 
@@ -14,51 +15,85 @@ import avatarPlaceholder from '../../assets/images/images/avatar.png';
 export default function About() {
   return (
     <div className="min-h-screen font-sans text-white selection:bg-pink-500/30 overflow-x-hidden relative" style={{ background: '#060212' }}>
-      {/* Background Glows */}
+      {/* ── Global Mesh Gradients ── */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute top-[-10%] left-[-10%] w-[70%] h-[70%] bg-purple-900/10 blur-[180px] rounded-full animate-pulse" />
-        <div className="absolute top-[20%] right-[-10%] w-[60%] h-[60%] bg-pink-900/15 blur-[180px] rounded-full animate-pulse delay-1000" />
+        <div className="absolute top-[-20%] left-[-20%] w-[80%] h-[80%] bg-purple-900/20 blur-[250px] rounded-full animate-pulse" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-pink-900/15 blur-[250px] rounded-full animate-pulse delay-1000" />
       </div>
 
       <div className="relative z-10">
         <Navbar />
 
         {/* ── Hero Section ── */}
-        <section className="relative w-full min-h-[70vh] flex flex-col justify-center items-center pt-32 pb-20 px-6 overflow-hidden">
+        <section className="relative w-full min-h-[85vh] flex flex-col justify-center items-center pt-32 pb-20 px-6 overflow-hidden">
           <div className="absolute inset-0 z-0 opacity-40">
             <img src={heroBg} alt="Hero Background" className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-b from-[#060212] via-[#060212]/80 to-[#060212]" />
           </div>
 
-          <div className="relative z-10 text-center max-w-4xl mx-auto mt-12">
+          <div className="relative z-10 text-center max-w-5xl mx-auto mt-12">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-1.5 rounded-full text-pink-500 text-xs font-black uppercase tracking-widest mb-8 shadow-xl shadow-pink-500/5 backdrop-blur-xl"
+            >
+              <Sparkles className="w-3.5 h-3.5" /> Empowering Modern Brands
+            </motion.div>
+
             <motion.h1 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 tracking-tighter leading-[1.1] text-white"
+              className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 tracking-tighter leading-[1.05] text-white"
             >
               Driven by creativity, <br/>
-              <span className="bg-gradient-to-r from-pink-500 to-rose-500 bg-clip-text text-transparent">powered by innovation</span>
+              <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-rose-500 bg-clip-text text-transparent">powered by innovation</span>
             </motion.h1>
             
             <motion.p 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-gray-300 text-lg md:text-xl font-medium max-w-2xl mx-auto leading-relaxed"
+              className="text-gray-300 text-lg md:text-2xl font-medium max-w-3xl mx-auto leading-relaxed"
             >
               Discover who we are, what we do, and how we turn ideas into powerful digital products.
             </motion.p>
           </div>
         </section>
 
+        {/* ── Stats Dashboard ── */}
+        <section className="py-12 px-6 max-w-7xl mx-auto border-y border-white/5 bg-white/[0.01] backdrop-blur-3xl">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 justify-items-center">
+            {[
+              { label: "Active Projects", value: "250+", Icon: Rocket, color: "text-pink-500" },
+              { label: "Design Experts", value: "40+", Icon: Users, color: "text-purple-500" },
+              { label: "Happy Partners", value: "99%", Icon: Smile, color: "text-rose-500" },
+              { label: "Awards Secured", value: "15+", Icon: Award, color: "text-indigo-500" }
+            ].map((stat, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="flex flex-col items-center text-center p-4"
+              >
+                <div className={`${stat.color} mb-3 opacity-80`}>
+                  <stat.Icon className="w-6 h-6 md:w-8 md:h-8" />
+                </div>
+                <div className="text-3xl md:text-4xl font-black text-white tracking-tight mb-1">{stat.value}</div>
+                <div className="text-xs md:text-sm font-bold text-gray-400 tracking-wider uppercase">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
         {/* ── Our Story Section ── */}
-        <section className="py-24 px-6 bg-transparent relative border-t border-white/5">
+        <section className="py-24 px-6 bg-transparent relative">
           <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
             
             {/* Left Content */}
             <div className="flex-1 space-y-6">
-              <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white">Our Story</h2>
-              <p className="text-pink-500 font-bold text-lg tracking-wide">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white leading-none">Our Story</h2>
+              <p className="text-pink-500 font-bold text-lg md:text-xl tracking-wide">
                 How we started and our journey to becoming a leading technology solutions provider.
               </p>
               <p className="text-gray-300 text-sm md:text-base leading-relaxed font-medium">
@@ -69,7 +104,7 @@ export default function About() {
               </p>
 
               <div className="pt-4">
-                <button className="bg-gradient-to-r from-pink-500 to-rose-600 text-white px-8 py-4 rounded-xl font-black uppercase tracking-widest text-xs shadow-xl shadow-pink-500/20 hover:scale-105 transition-all flex items-center gap-3 group">
+                <button className="bg-gradient-to-r from-pink-500 to-rose-600 text-white px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-xs shadow-xl shadow-pink-500/20 hover:scale-105 hover:shadow-pink-500/30 transition-all flex items-center gap-3 group">
                   Get Started
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
@@ -78,14 +113,17 @@ export default function About() {
 
             {/* Right Images Collage */}
             <div className="flex-1 grid grid-cols-2 gap-4 relative">
-              <div className="col-span-2 h-[250px] md:h-[300px] rounded-2xl overflow-hidden border border-white/10 group">
-                <img src={team1} alt="Collaborative Team" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="col-span-2 h-[250px] md:h-[350px] rounded-3xl overflow-hidden border border-white/10 group shadow-2xl relative">
+                <img src={team1} alt="Collaborative Team" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6" />
               </div>
-              <div className="h-[180px] md:h-[220px] rounded-2xl overflow-hidden border border-white/10 group">
-                <img src={team2} alt="Brainstorming Session" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="h-[180px] md:h-[240px] rounded-3xl overflow-hidden border border-white/10 group shadow-2xl relative">
+                <img src={team2} alt="Brainstorming Session" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6" />
               </div>
-              <div className="h-[180px] md:h-[220px] rounded-2xl overflow-hidden border border-white/10 group">
-                <img src={team3} alt="Iterative Execution" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="h-[180px] md:h-[240px] rounded-3xl overflow-hidden border border-white/10 group shadow-2xl relative">
+                <img src={team3} alt="Iterative Execution" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6" />
               </div>
             </div>
 
@@ -94,14 +132,14 @@ export default function About() {
 
         {/* ── Our Vision & Mission ── */}
         <section className="py-24 px-6 bg-transparent relative border-t border-white/5">
-          <div className="max-w-5xl mx-auto rounded-3xl overflow-hidden relative border border-white/10 shadow-2xl p-12 md:p-16 mb-16 text-center" style={{ background: 'linear-gradient(135deg, #0d0c15 0%, #1a153a 100%)' }}>
+          <div className="max-w-5xl mx-auto rounded-[40px] overflow-hidden relative border border-white/10 shadow-2xl p-12 md:p-20 mb-16 text-center" style={{ background: 'linear-gradient(135deg, #0d0c15 0%, #1a153a 100%)' }}>
             <div className="absolute inset-0 z-0 opacity-20">
               <img src={heroBg} alt="Vision Banner" className="w-full h-full object-cover" />
             </div>
             <div className="relative z-10">
-              <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white mb-4">Our Vision & Mission</h2>
-              <p className="text-gray-300 font-medium text-base mb-8">Guiding principles that drive everything we do.</p>
-              <button className="bg-white/10 border border-white/20 text-white px-8 py-3.5 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-white/20 transition-all flex items-center gap-2 mx-auto">
+              <h2 className="text-4xl md:text-5xl font-black tracking-tight text-white mb-6">Our Vision & Mission</h2>
+              <p className="text-gray-300 font-medium text-lg max-w-2xl mx-auto mb-10">Guiding principles that drive everything we do.</p>
+              <button className="bg-white/10 border border-white/20 text-white px-10 py-4 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-white/20 hover:scale-105 transition-all flex items-center gap-2 mx-auto">
                 Get In Touch
                 <ArrowRight className="w-4 h-4" />
               </button>
@@ -110,15 +148,15 @@ export default function About() {
 
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Vision Card */}
-            <div className="bg-[#100d23]/80 border border-white/10 p-8 md:p-12 rounded-3xl relative overflow-hidden group hover:border-pink-500/30 transition-all">
-              <div className="w-14 h-14 bg-pink-500/10 rounded-2xl flex items-center justify-center border border-pink-500/30 text-pink-500 mb-6 group-hover:scale-110 transition-transform">
+            <div className="bg-gradient-to-br from-[#100d23]/80 to-[#1c143d]/40 border border-white/10 p-10 md:p-14 rounded-[30px] relative overflow-hidden group hover:border-pink-500/30 hover:shadow-2xl hover:shadow-pink-500/5 transition-all duration-500">
+              <div className="w-16 h-16 bg-pink-500/10 rounded-2xl flex items-center justify-center border border-pink-500/30 text-pink-500 mb-8 group-hover:scale-110 transition-transform">
                 <Eye className="w-6 h-6" />
               </div>
-              <h3 className="text-2xl md:text-3xl font-black text-white mb-4">Our Vision</h3>
-              <p className="text-gray-300 text-sm md:text-base leading-relaxed font-medium mb-8">
+              <h3 className="text-3xl font-black text-white mb-4">Our Vision</h3>
+              <p className="text-gray-300 text-sm md:text-base leading-relaxed font-medium mb-10">
                 To empower businesses by transforming innovative ideas into seamless digital experiences that drive growth.
               </p>
-              <ul className="space-y-3 font-semibold text-sm text-gray-200">
+              <ul className="space-y-4 font-bold text-sm text-gray-200">
                 <li className="flex items-center gap-3">
                   <CheckCircle2 className="w-5 h-5 text-pink-500 shrink-0" /> Digital Transformation
                 </li>
@@ -132,15 +170,15 @@ export default function About() {
             </div>
 
             {/* Mission Card */}
-            <div className="bg-[#100d23]/80 border border-white/10 p-8 md:p-12 rounded-3xl relative overflow-hidden group hover:border-pink-500/30 transition-all">
-              <div className="w-14 h-14 bg-rose-500/10 rounded-2xl flex items-center justify-center border border-rose-500/30 text-rose-500 mb-6 group-hover:scale-110 transition-transform">
+            <div className="bg-gradient-to-br from-[#100d23]/80 to-[#1c143d]/40 border border-white/10 p-10 md:p-14 rounded-[30px] relative overflow-hidden group hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/5 transition-all duration-500">
+              <div className="w-16 h-16 bg-rose-500/10 rounded-2xl flex items-center justify-center border border-rose-500/30 text-rose-500 mb-8 group-hover:scale-110 transition-transform">
                 <Target className="w-6 h-6" />
               </div>
-              <h3 className="text-2xl md:text-3xl font-black text-white mb-4">Our Mission</h3>
-              <p className="text-gray-300 text-sm md:text-base leading-relaxed font-medium mb-8">
+              <h3 className="text-3xl font-black text-white mb-4">Our Mission</h3>
+              <p className="text-gray-300 text-sm md:text-base leading-relaxed font-medium mb-10">
                 To engineer visually outstanding product interfaces backed by highly reliable cross-platform infrastructures.
               </p>
-              <ul className="space-y-3 font-semibold text-sm text-gray-200">
+              <ul className="space-y-4 font-bold text-sm text-gray-200">
                 <li className="flex items-center gap-3">
                   <CheckCircle2 className="w-5 h-5 text-rose-500 shrink-0" /> Quality Digital Solutions
                 </li>
@@ -158,38 +196,50 @@ export default function About() {
         {/* ── Meet Our Team Section ── */}
         <section className="py-24 px-6 bg-transparent relative border-t border-white/5">
           <div className="max-w-7xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-black mb-4 tracking-tight">Meet Our Team</h2>
+            <h2 className="text-4xl md:text-5xl font-black mb-4 tracking-tight">Meet Our Team</h2>
             <p className="text-gray-400 font-medium text-base">The creative experts driving outstanding experiences.</p>
           </div>
 
-          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 justify-items-center">
+          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 justify-items-center">
             
             {/* Team Member 1 */}
             <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center group w-full max-w-[320px]"
+              className="text-center group w-full max-w-[340px]"
             >
-              <div className="h-[360px] md:h-[400px] rounded-[40px] overflow-hidden border border-white/10 mb-6 shadow-2xl relative group-hover:border-pink-500/30 transition-all duration-500">
-                <img src={avatarPlaceholder} alt="Ali Ahmed Siddiq" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              <div className="h-[380px] md:h-[440px] rounded-[40px] overflow-hidden border border-white/10 mb-6 shadow-2xl relative transition-all duration-500 group-hover:border-pink-500/30">
+                <img src={avatarPlaceholder} alt="Ali Ahmed Siddiq" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#060212]/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center pb-8">
+                  <div className="flex gap-4">
+                    <a href="#" className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-xl flex items-center justify-center text-white hover:bg-pink-500 transition-colors"><FaTwitter /></a>
+                    <a href="#" className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-xl flex items-center justify-center text-white hover:bg-pink-500 transition-colors"><FaLinkedin /></a>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-xl md:text-2xl font-black text-white mb-1">Ali Ahmed Siddiq</h3>
+              <h3 className="text-2xl font-black text-white mb-1">Ali Ahmed Siddiq</h3>
               <p className="text-pink-500 font-bold text-sm uppercase tracking-widest">Web Developer</p>
             </motion.div>
 
             {/* Team Member 2 */}
             <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-center group w-full max-w-[320px]"
+              className="text-center group w-full max-w-[340px]"
             >
-              <div className="h-[360px] md:h-[400px] rounded-[40px] overflow-hidden border border-white/10 mb-6 shadow-2xl relative group-hover:border-rose-500/30 transition-all duration-500">
-                <img src={avatarPlaceholder} alt="Priyanshu Sarogi" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              <div className="h-[380px] md:h-[440px] rounded-[40px] overflow-hidden border border-white/10 mb-6 shadow-2xl relative transition-all duration-500 group-hover:border-rose-500/30">
+                <img src={avatarPlaceholder} alt="Priyanshu Sarogi" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#060212]/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center pb-8">
+                  <div className="flex gap-4">
+                    <a href="#" className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-xl flex items-center justify-center text-white hover:bg-rose-500 transition-colors"><FaInstagram /></a>
+                    <a href="#" className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-xl flex items-center justify-center text-white hover:bg-rose-500 transition-colors"><FaLinkedin /></a>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-xl md:text-2xl font-black text-white mb-1">Priyanshu Sarogi</h3>
+              <h3 className="text-2xl font-black text-white mb-1">Priyanshu Sarogi</h3>
               <p className="text-rose-500 font-bold text-sm uppercase tracking-widest">Video Editor</p>
             </motion.div>
 
