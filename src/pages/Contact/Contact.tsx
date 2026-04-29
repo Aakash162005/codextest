@@ -6,132 +6,12 @@ import {
     PhoneCall, 
     MapPin
 } from 'lucide-react';
-import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaYoutube } from 'react-icons/fa';
+import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import logoImg from '../../assets/logo.png';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
 
-/* ── Local Components ── */
 
-function LocalNavbar() {
-    return (
-        <nav className="absolute top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-16 py-6 bg-transparent">
-            {/* Logo */}
-            <div className="flex items-center gap-2 group cursor-pointer">
-                <img src={logoImg} alt="Logo" className="w-14 h-14 transition-transform group-hover:rotate-12" />
-            </div>
-
-            {/* Nav Links */}
-            <div className="hidden md:flex items-center gap-10">
-                {['Home', 'About Us', 'Services', 'Our Work'].map((item) => (
-                    <a 
-                        key={item} 
-                        href="#" 
-                        className="text-white text-sm font-semibold hover:text-pink-500 transition-colors tracking-wide"
-                    >
-                        {item}
-                    </a>
-                ))}
-            </div>
-
-            {/* CTA Button */}
-            <button className="bg-gradient-to-r from-pink-500 to-rose-600 text-white px-6 py-2.5 rounded-xl font-bold text-sm shadow-lg shadow-pink-500/25 flex items-center gap-2 hover:scale-105 transition-all">
-                Get Started
-                <ArrowRight className="w-4 h-4" />
-            </button>
-        </nav>
-    );
-}
-
-function LocalFooter({ isLight }: { isLight: boolean }) {
-    return (
-        <footer className="bg-[#0b0b12] pt-24 pb-12 px-6">
-            <div className="max-w-7xl mx-auto flex flex-col items-center">
-                {/* Brand Header */}
-                <div className="mb-16 text-center">
-                    <div className="relative mb-[20px] group">
-                        <div className={`absolute inset-0 blur-[35px] opacity-20 group-hover:opacity-40 transition-opacity duration-500 ${isLight ? 'bg-red-500' : 'bg-[#c8ff00]'}`}></div>
-                        <img
-                            src={logoImg}
-                            alt="CodeXConquer Logo"
-                            className="w-[110px] md:w-[130px] h-auto relative z-10 transition-transform duration-500 hover:scale-110 mx-auto"
-                        />
-                    </div>
-                    <div className="text-[22px] md:text-[26px] font-black text-white tracking-tight font-display mb-[10px]">CodeXConquer</div>
-                    <p className="text-gray-400 text-[15px] font-medium tracking-wide max-w-sm mx-auto">Helping businesses grow with smart digital solutions.</p>
-                </div>
-
-                {/* Footer Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 w-full mb-20 border-t border-white/5 pt-16">
-                    {/* Services Column */}
-                    <div>
-                        <h4 className="text-white font-bold text-base mb-8">Services</h4>
-                        <ul className="space-y-4">
-                            {['Digital Marketing', 'App Development', 'Web Development', 'UI/UX Design', 'Online Courses'].map(link => (
-                                <li key={link}>
-                                    <a href="#" className="text-gray-400 text-sm hover:text-pink-500 transition-colors font-medium">{link}</a>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    {/* Quick Links Column */}
-                    <div>
-                        <h4 className="text-white font-bold text-base mb-8">Quick Links</h4>
-                        <ul className="space-y-4">
-                            {['Home', 'About Us', 'Contact Us', 'Careers', 'Terms & Conditions', 'Privacy Policy', "FAQ's"].map(link => (
-                                <li key={link}>
-                                    <a href="#" className="text-gray-400 text-sm hover:text-pink-500 transition-colors font-medium">{link}</a>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    {/* Subscribe Column */}
-                    <div>
-                        <h4 className="text-white font-bold text-base mb-8">Subscribe</h4>
-                        <div className="relative mb-8">
-                            <input 
-                                type="text" 
-                                placeholder="Enter your email" 
-                                className="w-full bg-[#1a1a24] text-white text-sm px-6 py-4 rounded-xl border border-white/5 outline-none focus:border-pink-500 transition-all"
-                            />
-                            <button className="absolute right-2 top-2 bottom-2 bg-red-500 text-white px-4 rounded-lg font-bold text-[10px] uppercase tracking-widest hover:bg-red-600 transition-all">
-                                Subscribe
-                            </button>
-                        </div>
-                        
-                        <h5 className="text-white font-bold text-[13px] mb-4">Trending Services</h5>
-                        <div className="flex gap-3">
-                            {[
-                                "bg-pink-600",
-                                "bg-orange-500",
-                                "bg-yellow-500",
-                                "bg-cyan-500"
-                            ].map((color, i) => (
-                                <div key={i} className={`w-8 h-8 rounded-md ${color} flex items-center justify-center hover:scale-110 transition-all cursor-pointer shadow-lg shadow-black/20`}>
-                                    <div className="w-3 h-3 bg-white/30 rounded-sm" />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-
-                {/* Bottom Bar */}
-                <div className="w-full border-t border-white/5 pt-10 flex flex-col items-center gap-8">
-                    <div className="flex gap-8">
-                        {[FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaYoutube].map((Icon, i) => (
-                            <a key={i} href="#" className="text-gray-400 hover:text-white transition-all transform hover:-translate-y-1">
-                                <Icon className="w-5 h-5" />
-                            </a>
-                        ))}
-                    </div>
-                    <p className="text-gray-500 text-[11px] font-bold uppercase tracking-[0.3em] text-center">
-                        © 2023-2025 CodeXConquer. All Rights Reserved.
-                    </p>
-                </div>
-            </div>
-        </footer>
-    );
-}
 
 export default function Contact2() {
     const [isLight, setIsLight] = React.useState(() => {
@@ -188,7 +68,7 @@ export default function Contact2() {
 
     return (
         <div className="min-h-screen font-sans bg-white dark:bg-black transition-colors duration-500 overflow-x-hidden">
-            <LocalNavbar />
+            <Navbar />
 
             {/* ── Hero Section ── */}
             <section className="relative w-full min-h-[80vh] flex flex-col justify-center items-center overflow-hidden pt-20">
@@ -316,7 +196,7 @@ export default function Contact2() {
                 </div>
             </section>
 
-            <LocalFooter isLight={isLight} />
+            <Footer />
         </div>
     );
 }

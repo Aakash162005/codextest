@@ -1,8 +1,8 @@
-import Navbar from "../../components/common/Navbar";
+import Navbar from "../../components/Navbar";
 import Hero from "./sections/Hero";
 import Projects from "./sections/Projects";
 import Stats from "./sections/Stats";
-import Footer from "../../components/common/Footer";
+import Footer from "../../components/Footer";
 const Work = () => {
   return (
     <>
